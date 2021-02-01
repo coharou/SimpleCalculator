@@ -1,0 +1,293 @@
+﻿<Window x:Class="SimpleCalculator.CalculatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleCalculator"
+        mc:Ignorable="d"
+        Title="CalculatorWindow" 
+        Height="540" 
+        Width="480"
+        Background="#3e4045">
+    <Window.Resources>
+        <Style x:Key="sty_lbl_info" 
+               TargetType="Label">
+            <Setter Property="Background" Value="#0f1012"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Helvetica"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Padding" Value="10"></Setter>
+        </Style>
+        <Style x:Key="sty_btn_obj" 
+               TargetType="Button">
+            <Setter Property="Background" Value="#0f1012"></Setter>
+            <Setter Property="BorderBrush" Value="#3e4045"></Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Helvetica"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Padding" Value="5"></Setter>
+        </Style>
+        <Style x:Key="sty_txt_enabled" 
+               TargetType="TextBox">
+            <Setter Property="Background" Value="White"></Setter>
+            <Setter Property="IsEnabled" Value="True"></Setter>
+        </Style>
+        <Style x:Key="sty_txt_disabled" 
+               TargetType="TextBox">
+            <Setter Property="Background" Value="#63666d"></Setter>
+            <Setter Property="Text" Value=""></Setter>
+            <Setter Property="IsEnabled" Value="False"></Setter>
+        </Style>
+        <Style x:Key="sty_lbl_enabled"
+               BasedOn="{StaticResource sty_lbl_info}"
+               TargetType="Label">
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+        <Style x:Key="sty_lbl_disabled" 
+               BasedOn="{StaticResource sty_lbl_info}"
+               TargetType="Label">
+            <Setter Property="Foreground" Value="#63666d"></Setter>
+        </Style>
+        <Style x:Key="sty_rad_btn_enabled"
+               TargetType="RadioButton">
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="IsEnabled" Value="True"></Setter>
+        </Style>
+        <Style x:Key="sty_rad_btn_disabled"
+               TargetType="RadioButton">
+            <Setter Property="Foreground" Value="#63666d"></Setter>
+            <Setter Property="IsEnabled" Value="False"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel 
+            Width="280"
+            HorizontalAlignment="Left"
+            Margin= "10">
+            <Label 
+                x:Name = "lbl_Title" 
+                Content="Daily Water Consumption"
+                Style="{StaticResource sty_lbl_info}"/>
+            <StackPanel
+                Background="#0f1012"
+                Margin="0, 10">
+                <Label 
+                    x:Name ="lbl_Vol_Opts" 
+                    Content="Options"
+                    Style="{StaticResource sty_lbl_info}"/>
+                <ComboBox 
+                    x:Name="com_Opts" 
+                    SelectionChanged="ComboBoxItemChange">
+                    <ComboBoxItem 
+                        x:Name="cbi_Opt_Known">
+                        Exact bottle volume (volume)
+                    </ComboBoxItem>
+                    <ComboBoxItem 
+                        x:Name="cbi_Opt_Unknown">
+                        Bottle measurements (height, diameter)
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label 
+                    x:Name="lbl_Height"
+                    Grid.Row = "0"
+                    Grid.Column="0"
+                    Content="Height"
+                    Style="{StaticResource sty_lbl_info}"/>
+                <Label 
+                    x:Name="lbl_Diameter"
+                    Grid.Row = "1"
+                    Grid.Column="0"
+                    Content="Diameter"
+                    Style="{StaticResource sty_lbl_info}"/>
+                <Label 
+                    x:Name="lbl_Volume"
+                    Grid.Row = "2"
+                    Grid.Column="0"
+                    Content="Volume"
+                    Style="{StaticResource sty_lbl_info}"/>
+                <Label 
+                    x:Name="lbl_Units_In"
+                    Grid.Row = "3"
+                    Grid.Column="0"
+                    Content="Input units"
+                    Style="{StaticResource sty_lbl_info}"/>
+                <Label 
+                    x:Name="lbl_Units_Out"
+                    Grid.Row = "4"
+                    Grid.Column="0"
+                    Content="Output units"
+                    Style="{StaticResource sty_lbl_info}"/>
+                <Label 
+                    x:Name="lbl_Bottles"
+                    Grid.Row = "5"
+                    Grid.Column="0"
+                    Content="Bottles / day"
+                    Style="{StaticResource sty_lbl_info}"/>
+                <TextBox 
+                    x:Name="txt_Height"
+                    Grid.Row= "0"
+                    Grid.Column="1"
+                    TextWrapping="Wrap" 
+                    Text=""/>
+                <TextBox 
+                    x:Name="txt_Diameter"
+                    Grid.Row= "1"
+                    Grid.Column="1"
+                    TextWrapping="Wrap" 
+                    Text=""/>
+                <TextBox 
+                    x:Name="txt_Volume"
+                    Grid.Row= "2"
+                    Grid.Column="1"
+                    TextWrapping="Wrap" 
+                    Text=""/>
+                <TextBox 
+                    x:Name="txt_Bottles"
+                    Grid.Row= "5"
+                    Grid.Column="1"
+                    TextWrapping="Wrap" 
+                    Text=""/>
+                <Rectangle
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Fill="#0f1012">
+                </Rectangle>
+                <Rectangle
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Fill="#0f1012">
+                </Rectangle>
+                <RadioButton
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    x:Name="rad_btn_input_cm"
+                    GroupName="grp_input_units"
+                    FontFamily="Helvetica"
+                    Margin="0,8,0,20"
+                    Foreground="White">
+                    Centimeters (cm)
+                </RadioButton>
+                <RadioButton
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    x:Name="rad_btn_input_in"
+                    GroupName="grp_input_units" 
+                    Margin="0,21,0,5"
+                    FontFamily="Helvetica"
+                    Foreground="White">
+                    Inches (in)
+                </RadioButton>
+                <RadioButton
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    x:Name="rad_btn_output_ml"
+                    GroupName="grp_output_units"
+                    Margin="0,8,0,0"
+                    FontFamily="Helvetica"
+                    Foreground="White">
+                    Milliliters (ml)
+                </RadioButton>
+                <RadioButton
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    x:Name="rad_btn_output_oz"
+                    GroupName="grp_output_units"
+                    Margin="0,21,0,5"
+                    FontFamily="Helvetica"
+                    Foreground="White">
+                    Fluid ounces (oz)
+                </RadioButton>
+            </Grid>
+            <Label 
+                x:Name="lbl_Consumed"
+                Style="{StaticResource sty_lbl_info}"
+                Content="Total consumed: "
+                Background="#4c7194"
+                HorizontalContentAlignment="Left"
+                Margin="0, 10"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button
+                    x:Name="btn_Clear"
+                    Grid.Column = "0"
+                    Grid.Row = "0"
+                    Content="Clear"
+                    Style="{StaticResource sty_btn_obj}" 
+                    Click="Clear">
+                </Button>
+                <Button
+                    x:Name="btn_Help"
+                    Grid.Column = "1"
+                    Grid.Row = "1"
+                    Content="Help"
+                    Background="#4c7194"
+                    Style="{StaticResource sty_btn_obj}"
+                    Click="OpenHelp">
+                </Button>
+                <Button
+                    x:Name="btn_Calc"
+                    Grid.Column = "1"
+                    Grid.Row = "0"
+                    Content="Calculate"
+                    Style="{StaticResource sty_btn_obj}" 
+                    Click="Calculate">
+                </Button>
+                <Button
+                    x:Name="btn_Exit"
+                    Grid.Column = "0"
+                    Grid.Row = "1"
+                    Content="Exit App"
+                    Background= "#5a2727"
+                    Style="{StaticResource sty_btn_obj}" 
+                    Click="ExitApp">
+                </Button>
+            </Grid>
+        </StackPanel>
+        <StackPanel 
+            HorizontalAlignment="Right" 
+            Width="160"
+            Margin="10">
+            <Image
+                Height="120" 
+                Source="https://openclipart.org/image/400px/214854"/>
+            <Label 
+                x:Name="lbl_Error"
+                Foreground="#f13b3b"
+                Content="Error Log:"
+                FontSize="16"
+                FontFamily="Helvetica"
+                HorizontalAlignment="Center"/>
+            <TextBlock
+                x:Name= "tb_Error_List"
+                TextWrapping="Wrap" 
+                FontSize="13"
+                FontFamily="Helvetica"
+                Foreground="#f13b3b"
+                HorizontalAlignment="Center"
+                Text=""/>
+        </StackPanel>
+    </Grid>
+</Window>

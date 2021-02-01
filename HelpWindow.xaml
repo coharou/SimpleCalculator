@@ -1,0 +1,110 @@
+﻿<Window x:Class="SimpleCalculator.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleCalculator"
+        mc:Ignorable="d"
+        Title="HelpWindow" 
+        Height="680" 
+        Width="490"
+        Background="#3e4045">
+    <Window.Resources>
+        <Style x:Key="sty_lbl_info" 
+               TargetType="Label">
+            <Setter Property="Background" Value="#0f1012"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Helvetica"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Padding" Value="10"></Setter>
+        </Style>
+        <Style x:Key="sty_btn_obj" 
+               TargetType="Button">
+            <Setter Property="Background" Value="#0f1012"></Setter>
+            <Setter Property="BorderBrush" Value="#3e4045"></Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Helvetica"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Padding" Value="5"></Setter>
+        </Style>
+        <Style x:Key="sty_tb_info"
+               TargetType="TextBlock">
+            <Setter Property="Background" Value="#0f1012"></Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Helvetica"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="9"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="450"
+            Height="628"
+            Margin="10,10,0,0">
+            <StackPanel 
+                Margin="0, 10">
+                <Label 
+                    Style="{StaticResource sty_lbl_info}"
+                    Content="SimpleCalculator Help Window"
+                    Background="#4c7194"/>
+                <TextBlock
+                    Style="{StaticResource sty_tb_info}"
+                    Background="#4c7194"
+                    Text="Water bottle clip art image retrieved from the Openclipart library."
+                    TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel 
+                Margin="0, 10">
+                <Label 
+                    Style="{StaticResource sty_lbl_info}"
+                    Content="Options"/>
+                <TextBlock
+                    Style="{StaticResource sty_tb_info}"
+                    Text="There are two options in the drop down menu. If you know the amount of liquid stored in the bottle, choose 'Exact bottle volume'. If not, you will need to measure the dimensions of the bottle, and choose 'Bottle measurements' as the option."
+                    TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel 
+                Margin="0, 10">
+                <Label 
+                    Style="{StaticResource sty_lbl_info}"
+                    Content="Input and Output Units"/>
+                <TextBlock
+                    Style="{StaticResource sty_tb_info}"
+                    Text="Input units are for values in the dimensions section. For instance, if you are measuring height with centimeters, choose the (cm) button. Output units will be displayed alongside the amount of water consumed."
+                    TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel 
+                Margin="0, 10">
+                <Label 
+                    Style="{StaticResource sty_lbl_info}"
+                    Content="Height, Diameter, Volume"/>
+                <TextBlock
+                    Style="{StaticResource sty_tb_info}"
+                    Text="Enter the values of either the bottle's dimensions or stated volume. Depending on the option, some of the text boxes may be disabled and do not require values. Only enter non-zero, positive, whole numbers."
+                    TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel 
+                Margin="0, 10">
+                <Label 
+                    Style="{StaticResource sty_lbl_info}"
+                    Content="Bottles per day"/>
+                <TextBlock
+                    Style="{StaticResource sty_tb_info}"
+                    Text="Refers to the amount of bottles consumed by the user, per day. Only enter non-zero, positive, whole numbers."
+                    TextWrapping="Wrap"/>
+            </StackPanel>
+            <Button
+                Style="{StaticResource sty_btn_obj}"
+                Background="#5a2727"
+                Content="Exit Help Window"
+                HorizontalAlignment="Center"
+                Padding="9"
+                Click="ExitWindow">
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
